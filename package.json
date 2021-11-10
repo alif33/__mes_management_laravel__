@@ -10,10 +10,11 @@
         "production": "mix --production",
         "s": "php artisan serve",
         "mr": "php artisan migrate",
+        "mrf": "php artisan migrate:fresh",
         "seed": "php artisan db:seed",
         "rb": "php artisan migrate:rollback --step=15",
         "refresh": "yarn rb && yarn mr && yarn seed",
-        "make": "php artisan make:model Extra -cfms",
+        "make": "php artisan make:model Request -cfms",
         "next": ""
     },
     "devDependencies": {

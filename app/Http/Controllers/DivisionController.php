@@ -78,5 +78,5 @@ class DivisionController extends Controller
             );
        } 
     }
-
+    
 }

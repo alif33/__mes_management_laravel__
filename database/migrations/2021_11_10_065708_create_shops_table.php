@@ -15,6 +15,9 @@ class CreateShopsTable extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('room_id')->unsigned();
+            $table->float('shop_amount')->unsigned();
             $table->timestamps();
         });
     }

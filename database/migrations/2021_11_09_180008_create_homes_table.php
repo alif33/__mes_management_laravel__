@@ -15,6 +15,10 @@ class CreateHomesTable extends Migration
     {
         Schema::create('homes', function (Blueprint $table) {
             $table->id();
+            $table->string('home_name');
+            $table->bigInteger('division_id')->unsigned();
+            $table->bigInteger('district_id')->unsigned();
+            $table->enum('gender', ['male', 'female', 'others']);
             $table->timestamps();
         });
     }

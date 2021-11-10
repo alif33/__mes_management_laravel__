@@ -15,6 +15,10 @@ class CreateMealsTable extends Migration
     {
         Schema::create('meals', function (Blueprint $table) {
             $table->id();
+            $table->float('meal_qunatity');
+            $table->enum('meal_status', ['breakfast', 'dinner', 'lunch']);
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('room_id')->unsigned();
             $table->timestamps();
         });
     }

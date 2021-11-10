@@ -15,6 +15,9 @@ class CreateExtrasTable extends Migration
     {
         Schema::create('extras', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('room_id')->unsigned();
+            $table->float('extra_amount')->unsigned();
             $table->timestamps();
         });
     }

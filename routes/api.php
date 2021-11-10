@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\DistrictController;
-use App\Http\Controllers\DivisionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +18,49 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+
+
+// User
+
+Route::group([
+    'prefix' => 'user'
+
+], function () use ($router) {
+
+    Route::post('login', [UserController::class, 'login']);
+    Route::post('register', [UserController::class, 'register']);
+    Route::post('logout', 'UserController@logout');
+    Route::post('refresh', 'UserController@refresh');
+    Route::post('me', 'UserController@me');
+
 });
+
+
+
+
+// Home
+
+Route::group(
+    [
+        'prefix' => '/'
+    ],
+    function ($router) {
+        Route::get('/homes', [HomeController::class, 'index']);
+        Route::get('/home/{id}', [HomeController::class, 'show']);
+        Route::post('/home', [HomeController::class, 'store']);
+        Route::put('/home/{id}', [HomeController::class, 'update']);
+        Route::delete('/home/{id}', [HomeController::class, 'destory']);
+    }
+);
+
+
+
+
+
 
 
 
